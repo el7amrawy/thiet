@@ -57,23 +57,15 @@ int genRandNum(int offset, int range){
 }
 
 string ro_pa_sc(int n){
-    // if( n==1 ){
-    //     return "Rock";
-    // } else if(n==2){
-    //     return "Paper";
-    // }else{
-    //     return "Scissors";
-    // }
-    switch (n)
-    {
-    case 1:
-        return "Rock";
-        break;
-    case 2:
-         return "Paper";
-        break;
-    default:
-        return "Scissors";
+    switch (n){
+        case 1:
+            return "Rock";
+            break;
+        case 2:
+            return "Paper";
+            break;
+        default:
+            return "Scissors";
     }
 }
 
