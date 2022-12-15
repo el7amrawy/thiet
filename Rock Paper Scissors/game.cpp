@@ -5,8 +5,8 @@ using namespace std;
 int genRandNum(int offset, int range);
 string ro_pa_sc(int n);
 void clearScreen(int n);
-void userWon(int userScore,int compScore);
-void compWon(int userScore,int compScore);
+void userWon(int* userScore,int compScore);
+void compWon(int userScore,int* compScore);
 
 int main(){
 
@@ -31,19 +31,15 @@ int main(){
                 cout<<"your score: "<<userScore<<"\t"<<"computer score: "<<compScore<<"\n";
             }
             else if(userInp<comp && comp-userInp==1){
-                compScore++;
-                compWon(userScore,compScore);
+                compWon(userScore,&compScore);
             }
             else if(userInp>comp && userInp-comp==1){
-                userScore++;
-                userWon(userScore,compScore);
+                userWon(&userScore,compScore);
             } else{
                 if(userInp==1){
-                    userScore++;
-                    userWon(userScore,compScore);
+                    userWon(&userScore,compScore);
                 }else{
-                    compScore++;
-                    compWon(userScore,compScore);
+                    compWon(userScore,&compScore);
                 }
             }
         }
@@ -75,12 +71,14 @@ void clearScreen(int n){
     }
 }
 
-void userWon(int userScore,int compScore){
+void userWon(int* userScore,int compScore){
+    *userScore+=1;
     cout<<"\n  *** you won ***\n\n";
-    cout<<"your score: "<<userScore<<"\t"<<"computer score: "<<compScore<<"\n\n";
+    cout<<"your score: "<<*userScore<<"\t"<<"computer score: "<<compScore<<"\n\n";
 }
 
-void compWon(int userScore,int compScore){
+void compWon(int userScore,int* compScore){
+    *compScore+=1;
     cout<<"\n  *** computer won ***\n\n";
-    cout<<"your score: "<<userScore<<"\t"<<"computer score: "<<compScore<<"\n\n";
+    cout<<"your score: "<<userScore<<"\t"<<"computer score: "<<*compScore<<"\n\n";
 }
